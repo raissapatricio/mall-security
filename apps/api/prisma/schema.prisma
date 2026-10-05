@@ -1,0 +1,52 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model User {
+  id           String        @id @default(uuid())
+  name         String
+  cpf          String        @unique
+  phone        String
+  address      String
+  cardLast4    String        // PCI-DSS: Armazena estritamente apenas os 4 últimos dígitos
+  passwordHash String        // Hash Bcrypt seguro gerado exclusivamente no servidor
+  balance      Float         @default(1000.0) // Saldo fictício inicial garantido no banco
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+
+  products     Product[]     @relation("SellerProducts")
+  purchases    Transaction[] @relation("BuyerTransactions")
+  sales        Transaction[] @relation("SellerTransactions")
+}
+
+model Product {
+  id          String        @id @default(uuid())
+  title       String
+  category    String
+  description String
+  price       Float
+  isSold      Boolean       @default(false)
+  sellerId    String
+  seller      User          @relation("SellerProducts", fields: [sellerId], references: [id], onDelete: Cascade)
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+
+  transactions Transaction[]
+}
+
+model Transaction {
+  id        String   @id @default(uuid())
+  amount    Float
+  productId String
+  product   Product  @relation(fields: [productId], references: [id])
+  buyerId   String
+  buyer     User     @relation("BuyerTransactions", fields: [buyerId], references: [id])
+  sellerId  String
+  seller    User     @relation("SellerTransactions", fields: [sellerId], references: [id])
+  createdAt DateTime @default(now())
+}

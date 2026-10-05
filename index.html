@@ -1,0 +1,2194 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NexusPay & Mall - Neumorphic FinTech Marketplace</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    /* ==========================================================================
+       DESIGN SYSTEM - NEUMORFISMO ELEGANTE / FINTECH
+       ========================================================================== */
+    :root {
+      --bg: #e6ecf4;
+      --bg-light: #f0f5fc;
+      --bg-dark: #d9e2ee;
+      --card-bg: #e6ecf4;
+      
+      /* Neumorphic Shadows */
+      --shadow-flat: 8px 8px 18px #cad5e2, -8px -8px 18px #ffffff;
+      --shadow-sm: 4px 4px 10px #cad5e2, -4px -4px 10px #ffffff;
+      --shadow-lg: 12px 12px 28px #cad5e2, -12px -12px 28px #ffffff;
+      --shadow-inset: inset 3px 3px 6px #cad5e2, inset -3px -3px 6px #ffffff;
+      --shadow-inset-deep: inset 5px 5px 10px #cad5e2, inset -5px -5px 10px #ffffff;
+      
+      /* Colors */
+      --primary: #2563eb;
+      --primary-hover: #1d4ed8;
+      --primary-glow: rgba(37, 99, 235, 0.25);
+      --accent: #0ea5e9;
+      --success: #10b981;
+      --success-bg: rgba(16, 185, 129, 0.12);
+      --warning: #f59e0b;
+      --danger: #ef4444;
+      --danger-bg: rgba(239, 68, 68, 0.12);
+      
+      /* Typography */
+      --text-main: #1e293b;
+      --text-muted: #64748b;
+      --text-sub: #94a3b8;
+      
+      /* Layout & Animation */
+      --radius-sm: 10px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      --radius-full: 9999px;
+      --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+
+    /* Container */
+    .container {
+      width: 100%;
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* Neumorphic Utilities */
+    .neu-box {
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-flat);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      transition: var(--transition);
+    }
+
+    .neu-box-sm {
+      background: var(--card-bg);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+    }
+
+    .neu-inset {
+      background: var(--bg);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-inset);
+      border: 1px solid rgba(202, 213, 226, 0.3);
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.85rem 1.6rem;
+      font-size: 0.95rem;
+      font-weight: 600;
+      border-radius: var(--radius-full);
+      border: 1px solid rgba(255, 255, 255, 0.7);
+      background: var(--card-bg);
+      color: var(--text-main);
+      box-shadow: var(--shadow-sm);
+      cursor: pointer;
+      transition: var(--transition);
+      text-decoration: none;
+      user-select: none;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-flat);
+      color: var(--primary);
+    }
+
+    .btn:active {
+      transform: translateY(0);
+      box-shadow: var(--shadow-inset);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      color: #ffffff !important;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      box-shadow: 4px 4px 12px rgba(37, 99, 235, 0.35), -4px -4px 12px #ffffff;
+    }
+
+    .btn-primary:hover {
+      background: linear-gradient(135deg, #1d4ed8, #1e40af);
+      box-shadow: 6px 6px 16px rgba(37, 99, 235, 0.45), -4px -4px 12px #ffffff;
+    }
+
+    .btn-primary:active {
+      box-shadow: inset 2px 2px 6px rgba(0, 0, 0, 0.35);
+    }
+
+    .btn-success {
+      background: linear-gradient(135deg, #10b981, #059669);
+      color: #ffffff !important;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 4px 4px 12px rgba(16, 185, 129, 0.35), -4px -4px 12px #ffffff;
+    }
+
+    .btn-success:hover {
+      background: linear-gradient(135deg, #059669, #047857);
+      box-shadow: 6px 6px 16px rgba(16, 185, 129, 0.45), -4px -4px 12px #ffffff;
+    }
+
+    .btn-danger {
+      color: var(--danger) !important;
+    }
+    .btn-danger:hover {
+      color: #b91c1c !important;
+    }
+
+    .btn-sm {
+      padding: 0.5rem 1rem;
+      font-size: 0.85rem;
+    }
+
+    .btn:disabled, .btn.disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none !important;
+      box-shadow: var(--shadow-inset) !important;
+    }
+
+    /* Inputs */
+    .form-group {
+      margin-bottom: 1.25rem;
+      text-align: left;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      margin-bottom: 0.45rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 0.85rem 1.15rem;
+      font-size: 0.95rem;
+      color: var(--text-main);
+      background: var(--bg);
+      border: 1px solid rgba(202, 213, 226, 0.4);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-inset);
+      transition: var(--transition);
+      outline: none;
+    }
+
+    .form-control:focus {
+      border-color: rgba(37, 99, 235, 0.4);
+      box-shadow: var(--shadow-inset-deep), 0 0 0 3px var(--primary-glow);
+    }
+
+    .form-control::placeholder {
+      color: var(--text-sub);
+    }
+
+    textarea.form-control {
+      resize: vertical;
+      min-height: 90px;
+    }
+
+    /* Badges & Tags */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.35rem 0.8rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      border-radius: var(--radius-full);
+      box-shadow: var(--shadow-inset);
+      background: var(--bg);
+    }
+
+    .badge-primary { color: var(--primary); }
+    .badge-success { color: var(--success); }
+    .badge-warning { color: var(--warning); }
+    .badge-accent { color: var(--accent); }
+
+    /* ==========================================================================
+       HEADER & NAVIGATION
+       ========================================================================== */
+    header.main-header {
+      background: var(--bg);
+      padding: 1.1rem 0;
+      box-shadow: 0 4px 16px rgba(202, 213, 226, 0.5);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      cursor: pointer;
+    }
+
+    .logo-emblem {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      background: var(--card-bg);
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+      font-size: 1.4rem;
+      font-weight: 800;
+      border: 1px solid rgba(255, 255, 255, 0.8);
+    }
+
+    .logo-title {
+      font-size: 1.25rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--text-main);
+    }
+
+    .logo-title span {
+      color: var(--primary);
+    }
+
+    .header-user-actions {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .wallet-chip {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.45rem 1.1rem;
+      border-radius: var(--radius-full);
+      background: var(--bg);
+      box-shadow: var(--shadow-inset);
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .wallet-chip .balance-value {
+      color: var(--success);
+      font-size: 1.05rem;
+    }
+
+    /* Navigation Tabs */
+    .nav-tabs-bar {
+      display: flex;
+      gap: 0.6rem;
+      padding: 0.4rem;
+      border-radius: var(--radius-full);
+      background: var(--bg);
+      box-shadow: var(--shadow-inset);
+      margin: 1.5rem auto 2rem;
+      max-width: fit-content;
+    }
+
+    .nav-tab-btn {
+      padding: 0.65rem 1.4rem;
+      font-size: 0.9rem;
+      font-weight: 700;
+      border: none;
+      border-radius: var(--radius-full);
+      background: transparent;
+      color: var(--text-muted);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: var(--transition);
+    }
+
+    .nav-tab-btn.active {
+      background: var(--card-bg);
+      color: var(--primary);
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* ==========================================================================
+       AUTH SCREENS (LOGIN, REGISTER, RECOVERY)
+       ========================================================================== */
+    .auth-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: calc(100vh - 100px);
+      padding: 2.5rem 1rem;
+    }
+
+    .auth-card {
+      width: 100%;
+      max-width: 520px;
+      padding: 2.5rem 2.2rem;
+      text-align: center;
+    }
+
+    .auth-card-header {
+      margin-bottom: 2rem;
+    }
+
+    .auth-icon-circle {
+      width: 68px;
+      height: 68px;
+      border-radius: 50%;
+      background: var(--bg);
+      box-shadow: var(--shadow-flat);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.25rem;
+      color: var(--primary);
+      font-size: 1.8rem;
+    }
+
+    .auth-card-header h2 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 0.4rem;
+    }
+
+    .auth-card-header p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .auth-switch-text {
+      margin-top: 1.5rem;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .auth-link {
+      color: var(--primary);
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .auth-link:hover {
+      text-decoration: underline;
+    }
+
+    .auth-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    @media (max-width: 600px) {
+      .auth-grid-2 {
+        grid-template-columns: 1fr;
+      }
+      .auth-card {
+        padding: 2rem 1.25rem;
+      }
+    }
+
+    /* Security Notice Banner */
+    .security-banner {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.75rem 1rem;
+      border-radius: var(--radius-md);
+      background: rgba(37, 99, 235, 0.05);
+      border: 1px solid rgba(37, 99, 235, 0.15);
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-align: left;
+      margin-bottom: 1.25rem;
+    }
+
+    /* ==========================================================================
+       DASHBOARD / MAIN CONTENT
+       ========================================================================== */
+    .section-title-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.75rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    /* Profile / Wallet Hero Card */
+    .profile-hero-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 1.75rem;
+      margin-bottom: 2.5rem;
+    }
+
+    @media (max-width: 900px) {
+      .profile-hero-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .wallet-card {
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .wallet-card::before {
+      content: '';
+      position: absolute;
+      top: -30px;
+      right: -30px;
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(37, 99, 235, 0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .wallet-label {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .wallet-balance-big {
+      font-size: 2.4rem;
+      font-weight: 800;
+      color: var(--text-main);
+      margin: 0.4rem 0 1.25rem;
+      letter-spacing: -0.02em;
+    }
+
+    .wallet-balance-big span {
+      color: var(--success);
+    }
+
+    .wallet-actions {
+      display: flex;
+      gap: 0.85rem;
+      flex-wrap: wrap;
+    }
+
+    .user-profile-card {
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .profile-info-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+
+    .profile-info-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 0.6rem;
+      border-bottom: 1px dashed rgba(202, 213, 226, 0.8);
+      font-size: 0.9rem;
+    }
+
+    .profile-info-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .profile-info-item .info-label {
+      color: var(--text-muted);
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .profile-info-item .info-val {
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    /* Product Grid */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+      gap: 1.75rem;
+      margin-bottom: 3rem;
+    }
+
+    .product-card {
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      border-radius: var(--radius-lg);
+    }
+
+    .product-badge-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+    }
+
+    .product-category-tag {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 0.3rem 0.75rem;
+      border-radius: var(--radius-full);
+      box-shadow: var(--shadow-inset);
+      color: var(--accent);
+    }
+
+    .product-title {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 0.5rem;
+      line-height: 1.35;
+    }
+
+    .product-desc {
+      font-size: 0.87rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin-bottom: 1.25rem;
+      flex-grow: 1;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    /* Seller Box inside Product */
+    .product-seller-box {
+      background: var(--bg);
+      padding: 0.85rem;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-inset);
+      margin-bottom: 1.25rem;
+      font-size: 0.82rem;
+    }
+
+    .seller-header {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 0.35rem;
+    }
+
+    .seller-details {
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    .product-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(202, 213, 226, 0.4);
+      margin-top: auto;
+    }
+
+    .product-price {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--primary);
+    }
+
+    .own-product-tag {
+      padding: 0.5rem 1rem;
+      font-size: 0.82rem;
+      font-weight: 700;
+      border-radius: var(--radius-full);
+      background: var(--bg);
+      box-shadow: var(--shadow-inset);
+      color: var(--text-muted);
+    }
+
+    /* Create Product Form */
+    .create-product-container {
+      max-width: 680px;
+      margin: 0 auto 3rem;
+      padding: 2.2rem;
+    }
+
+    /* Filter & Search Bar */
+    .search-filter-bar {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .search-input-wrap {
+      flex: 1;
+      min-width: 240px;
+    }
+
+    .category-select {
+      min-width: 170px;
+      cursor: pointer;
+    }
+
+    /* ==========================================================================
+       MODALS & OVERLAYS
+       ========================================================================== */
+    .modal-backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(15, 23, 42, 0.45);
+      backdrop-filter: blur(6px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      padding: 1rem;
+    }
+
+    .modal-backdrop.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-dialog {
+      width: 100%;
+      max-width: 480px;
+      padding: 2.2rem;
+      transform: translateY(20px) scale(0.95);
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .modal-backdrop.show .modal-dialog {
+      transform: translateY(0) scale(1);
+    }
+
+    .modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.5rem;
+    }
+
+    .modal-title {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--text-main);
+    }
+
+    .modal-close-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--bg);
+      border: none;
+      box-shadow: var(--shadow-sm);
+      color: var(--text-muted);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      transition: var(--transition);
+    }
+
+    .modal-close-btn:hover {
+      color: var(--danger);
+      box-shadow: var(--shadow-flat);
+    }
+
+    /* SMS Toast Simulator */
+    .sms-toast-wrap {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      max-width: 380px;
+      width: calc(100% - 4rem);
+      z-index: 1200;
+      pointer-events: none;
+    }
+
+    .sms-toast {
+      padding: 1.25rem 1.4rem;
+      border-radius: var(--radius-lg);
+      background: var(--bg);
+      box-shadow: var(--shadow-lg);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      pointer-events: auto;
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .sms-toast.visible {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .sms-toast-header {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .sms-toast-body {
+      font-size: 0.88rem;
+      color: var(--text-main);
+      line-height: 1.45;
+      margin-bottom: 1rem;
+    }
+
+    .sms-otp-badge {
+      display: inline-block;
+      letter-spacing: 0.25em;
+      font-family: monospace;
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--primary);
+      padding: 0.3rem 0.8rem;
+      background: var(--bg);
+      box-shadow: var(--shadow-inset);
+      border-radius: var(--radius-sm);
+      margin: 0.25rem 0;
+    }
+
+    /* Notification Toasts (General) */
+    .notification-toaster {
+      position: fixed;
+      top: 1.5rem;
+      right: 1.5rem;
+      z-index: 2000;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      pointer-events: none;
+    }
+
+    .toast-msg {
+      pointer-events: auto;
+      min-width: 280px;
+      max-width: 360px;
+      padding: 0.9rem 1.25rem;
+      border-radius: var(--radius-md);
+      background: var(--bg);
+      box-shadow: var(--shadow-flat);
+      border-left: 5px solid var(--primary);
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      animation: toastIn 0.3s ease forwards;
+    }
+
+    .toast-msg.success { border-left-color: var(--success); }
+    .toast-msg.error { border-left-color: var(--danger); }
+    .toast-msg.warning { border-left-color: var(--warning); }
+
+    @keyframes toastIn {
+      from { transform: translateX(100%); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+
+    /* Empty State */
+    .empty-state {
+      text-align: center;
+      padding: 4rem 1.5rem;
+      grid-column: 1 / -1;
+    }
+
+    .empty-state-icon {
+      font-size: 3rem;
+      color: var(--text-sub);
+      margin-bottom: 1rem;
+    }
+
+    .empty-state h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 0.5rem;
+    }
+
+    .empty-state p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    /* Quick Deposit Buttons */
+    .quick-deposit-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .quick-val-btn {
+      padding: 0.75rem;
+      border-radius: var(--radius-md);
+      font-weight: 700;
+      font-size: 0.9rem;
+      border: none;
+      background: var(--bg);
+      box-shadow: var(--shadow-sm);
+      color: var(--text-main);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .quick-val-btn:hover {
+      box-shadow: var(--shadow-inset);
+      color: var(--primary);
+    }
+
+    /* Footer */
+    footer.main-footer {
+      margin-top: auto;
+      padding: 2rem 0;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      border-top: 1px solid rgba(202, 213, 226, 0.4);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==========================================================================
+       HEADER
+       ========================================================================== -->
+  <header class="main-header">
+    <div class="container header-content">
+      <div class="logo-container" id="brandLogo">
+        <div class="logo-emblem">N</div>
+        <div class="logo-title">Nexus<span>Mall</span></div>
+      </div>
+
+      <div class="header-user-actions" id="headerAuthNav">
+        <!-- Rendered dynamically by JS -->
+      </div>
+    </div>
+  </header>
+
+  <!-- Notification Container -->
+  <div class="notification-toaster" id="toastContainer"></div>
+
+  <!-- Simulated SMS Toast -->
+  <div class="sms-toast-wrap">
+    <div class="sms-toast" id="smsToast">
+      <div class="sms-toast-header">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+        </svg>
+        <span>MENSAGEM SMS SIMULADA • NEXUS SEC</span>
+      </div>
+      <div class="sms-toast-body" id="smsToastBody">
+        NexusPay: Seu código de liberação para redefinição é <strong class="sms-otp-badge" id="smsOtpCode">000000</strong>.
+      </div>
+      <button class="btn btn-primary btn-sm" style="width: 100%;" id="smsConfirmActionBtn">
+        Validar SMS e Redefinir Senha
+      </button>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       MAIN CONTENT CONTAINER
+       ========================================================================== -->
+  <main class="container" id="appRoot">
+    <!-- View rendered dynamically: 'login', 'register', 'recovery', 'dashboard' -->
+  </main>
+
+  <!-- ==========================================================================
+       MODAL: DEPOSITAR SALDO
+       ========================================================================== -->
+  <div class="modal-backdrop" id="depositModal">
+    <div class="modal-dialog neu-box">
+      <div class="modal-header">
+        <div class="modal-title">Depósito em Carteira</div>
+        <button class="modal-close-btn" onclick="UI.closeModal('depositModal')">&times;</button>
+      </div>
+      <form id="depositForm">
+        <div class="form-group">
+          <label class="form-label">Valores Rápidos</label>
+          <div class="quick-deposit-grid">
+            <button type="button" class="quick-val-btn" onclick="UI.setDepositQuickVal(100)">+ R$ 100</button>
+            <button type="button" class="quick-val-btn" onclick="UI.setDepositQuickVal(500)">+ R$ 500</button>
+            <button type="button" class="quick-val-btn" onclick="UI.setDepositQuickVal(1000)">+ R$ 1.000</button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="depositAmount">Valor do Depósito (R$)</label>
+          <input type="number" step="0.01" min="10" max="50000" class="form-control" id="depositAmount" placeholder="Ex: 250,00" required>
+        </div>
+
+        <div class="security-banner">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+          </svg>
+          <span>Operação simulada de liquidação instantânea via Nexus Protocol.</span>
+        </div>
+
+        <div style="display: flex; gap: 0.85rem; margin-top: 1.5rem;">
+          <button type="button" class="btn" style="flex: 1;" onclick="UI.closeModal('depositModal')">Cancelar</button>
+          <button type="submit" class="btn btn-primary" style="flex: 1;">Confirmar Depósito</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       MODAL: REDEFINIÇÃO DE SENHA (APÓS SMS)
+       ========================================================================== -->
+  <div class="modal-backdrop" id="resetPasswordModal">
+    <div class="modal-dialog neu-box">
+      <div class="modal-header">
+        <div class="modal-title">Nova Senha de Acesso</div>
+        <button class="modal-close-btn" onclick="UI.closeModal('resetPasswordModal')">&times;</button>
+      </div>
+      <form id="resetPasswordForm">
+        <input type="hidden" id="resetTargetCpf">
+        
+        <div class="form-group">
+          <label class="form-label" for="newPasswordInput">Nova Senha</label>
+          <input type="password" class="form-control" id="newPasswordInput" placeholder="Mínimo 6 caracteres" required minlength="6">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="confirmNewPasswordInput">Confirmar Nova Senha</label>
+          <input type="password" class="form-control" id="confirmNewPasswordInput" placeholder="Repita a senha" required minlength="6">
+        </div>
+
+        <div style="display: flex; gap: 0.85rem; margin-top: 1.5rem;">
+          <button type="button" class="btn" style="flex: 1;" onclick="UI.closeModal('resetPasswordModal')">Cancelar</button>
+          <button type="submit" class="btn btn-primary" style="flex: 1;">Salvar Senha</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       FOOTER
+       ========================================================================== -->
+  <footer class="main-footer">
+    <div class="container">
+      <p>NexusPay & Mall &bull; Arquitetura Segura OWASP &bull; Proteção PCI-DSS &bull; Estética Neumórfica FinTech</p>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       CORE JAVASCRIPT APPLICATION LOGIC
+       ========================================================================== -->
+  <script>
+    /**
+     * Nexus Marketplace & Security Engine
+     * Strict Vanilla JavaScript Implementation
+     */
+    
+    // --- STORAGE KEYS ---
+    const STORAGE_KEYS = {
+      USERS: 'nexus_users_db',
+      PRODUCTS: 'nexus_products_db',
+      SESSION_USER_CPF: 'nexus_active_session_cpf'
+    };
+
+    // --- CRYPTO & SECURITY UTILITIES (OWASP / PCI-DSS) ---
+    const CryptoService = {
+      /**
+       * SHA-256 Hash using crypto.subtle (OWASP compliant)
+       * @param {string} text - Plain text password
+       * @returns {Promise<string>} Hex representation of SHA-256 hash
+       */
+      async sha256(text) {
+        if (!window.crypto || !window.crypto.subtle) {
+          // Fallback if subtle not available
+          let hash = 0;
+          for (let i = 0; i < text.length; i++) {
+            hash = ((hash << 5) - hash) + text.charCodeAt(i);
+            hash |= 0;
+          }
+          return 'fallback_' + Math.abs(hash).toString(16);
+        }
+        const msgBuffer = new TextEncoder().encode(text);
+        const hashBuffer = await window.crypto.subtle.digest('SHA-256', msgBuffer);
+        const hashArray = Array.from(new Uint8Array(hashBuffer));
+        return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+      },
+
+      /**
+       * PCI-DSS Credit Card Masker
+       * Extracts only the last 4 digits and stores formatted mask
+       * @param {string} fullCardNumber 
+       * @returns {string} e.g. '**** **** **** 1234'
+       */
+      maskCreditCard(fullCardNumber) {
+        const cleaned = fullCardNumber.replace(/\D/g, '');
+        const last4 = cleaned.slice(-4) || '0000';
+        return `**** **** **** ${last4}`;
+      }
+    };
+
+    // --- INPUT FORMATTERS & MASKS ---
+    const InputMasks = {
+      formatCPF(value) {
+        return value
+          .replace(/\D/g, '')
+          .slice(0, 11)
+          .replace(/(\d{3})(\d)/, '$1.$2')
+          .replace(/(\d{3})(\d)/, '$1.$2')
+          .replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+      },
+
+      formatPhone(value) {
+        const cleaned = value.replace(/\D/g, '').slice(0, 11);
+        if (cleaned.length <= 10) {
+          return cleaned
+            .replace(/(\d{2})(\d)/, '($1) $2')
+            .replace(/(\d{4})(\d)/, '$1-$2');
+        }
+        return cleaned
+          .replace(/(\d{2})(\d)/, '($1) $2')
+          .replace(/(\d{5})(\d{1,4})$/, '$1-$2');
+      },
+
+      formatCard(value) {
+        return value
+          .replace(/\D/g, '')
+          .slice(0, 16)
+          .replace(/(\d{4})(?=\d)/g, '$1 ');
+      },
+
+      formatBRL(amount) {
+        return Number(amount).toLocaleString('pt-BR', {
+          style: 'currency',
+          currency: 'BRL'
+        });
+      },
+
+      cleanDigits(value) {
+        return (value || '').replace(/\D/g, '');
+      }
+    };
+
+    // --- DATABASE MANAGER (localStorage & sessionStorage) ---
+    const DB = {
+      init() {
+        if (!localStorage.getItem(STORAGE_KEYS.USERS)) {
+          // Seed initial demo store seller
+          const defaultSeller = {
+            id: 'seller_nexus_official',
+            name: 'Nexus Tech Store Oficial',
+            cpf: '111.222.333-44',
+            phone: '(11) 98765-4321',
+            address: 'Av. Paulista, 1000 - Bela Vista, São Paulo - SP',
+            cardMasked: '**** **** **** 8888',
+            // Pre-hashed sha256 for password '123456'
+            passwordHash: '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92',
+            balance: 15400.00,
+            createdAt: new Date().toISOString()
+          };
+          localStorage.setItem(STORAGE_KEYS.USERS, JSON.stringify([defaultSeller]));
+        }
+
+        if (!localStorage.getItem(STORAGE_KEYS.PRODUCTS)) {
+          // Seed demo products
+          const initialProducts = [
+            {
+              id: 'prod_' + Date.now() + '_1',
+              title: 'MacBook Air M2 16GB 512GB',
+              category: 'Eletrônicos',
+              description: 'Em perfeito estado, caixa original, bateria com 98% de saúde e carregador MagSafe incluso.',
+              price: 7490.00,
+              sellerCpf: '111.222.333-44',
+              createdAt: new Date().toISOString()
+            },
+            {
+              id: 'prod_' + Date.now() + '_2',
+              title: 'Monitor Ultrawide 34" Curvo 144Hz',
+              category: 'Periféricos',
+              description: 'Painel IPS com resolução WQHD, suporte HDR e portas USB-C com Power Delivery.',
+              price: 2850.00,
+              sellerCpf: '111.222.333-44',
+              createdAt: new Date().toISOString()
+            },
+            {
+              id: 'prod_' + Date.now() + '_3',
+              title: 'Cadeira Ergonômica Mesh Pro',
+              category: 'Móveis',
+              description: 'Ajuste lombar 3D, braços multidirecionais e certificação NR17 para máxima ergonomia.',
+              price: 890.00,
+              sellerCpf: '111.222.333-44',
+              createdAt: new Date().toISOString()
+            }
+          ];
+          localStorage.setItem(STORAGE_KEYS.PRODUCTS, JSON.stringify(initialProducts));
+        }
+      },
+
+      getUsers() {
+        return JSON.parse(localStorage.getItem(STORAGE_KEYS.USERS) || '[]');
+      },
+
+      saveUsers(users) {
+        localStorage.setItem(STORAGE_KEYS.USERS, JSON.stringify(users));
+      },
+
+      findUserByCpf(cpf) {
+        const cleaned = InputMasks.cleanDigits(cpf);
+        return this.getUsers().find(u => InputMasks.cleanDigits(u.cpf) === cleaned);
+      },
+
+      getProducts() {
+        return JSON.parse(localStorage.getItem(STORAGE_KEYS.PRODUCTS) || '[]');
+      },
+
+      saveProducts(products) {
+        localStorage.setItem(STORAGE_KEYS.PRODUCTS, JSON.stringify(products));
+      },
+
+      getActiveUser() {
+        const activeCpf = sessionStorage.getItem(STORAGE_KEYS.SESSION_USER_CPF);
+        if (!activeCpf) return null;
+        return this.findUserByCpf(activeCpf);
+      },
+
+      setActiveSession(cpf) {
+        sessionStorage.setItem(STORAGE_KEYS.SESSION_USER_CPF, cpf);
+      },
+
+      clearActiveSession() {
+        sessionStorage.removeItem(STORAGE_KEYS.SESSION_USER_CPF);
+      },
+
+      updateUserBalance(cpf, newBalance) {
+        const users = this.getUsers();
+        const cleaned = InputMasks.cleanDigits(cpf);
+        const idx = users.findIndex(u => InputMasks.cleanDigits(u.cpf) === cleaned);
+        if (idx !== -1) {
+          users[idx].balance = Math.max(0, Number(newBalance));
+          this.saveUsers(users);
+          return users[idx];
+        }
+        return null;
+      },
+
+      updateUserPassword(cpf, newPasswordHash) {
+        const users = this.getUsers();
+        const cleaned = InputMasks.cleanDigits(cpf);
+        const idx = users.findIndex(u => InputMasks.cleanDigits(u.cpf) === cleaned);
+        if (idx !== -1) {
+          users[idx].passwordHash = newPasswordHash;
+          this.saveUsers(users);
+          return true;
+        }
+        return false;
+      }
+    };
+
+    // --- TOAST & NOTIFICATION CONTROLLER ---
+    const Toast = {
+      show(message, type = 'info') {
+        const container = document.getElementById('toastContainer');
+        const toast = document.createElement('div');
+        toast.className = `toast-msg ${type}`;
+
+        let icon = '&bull;';
+        if (type === 'success') icon = '&#10003;';
+        if (type === 'error') icon = '&#10007;';
+        if (type === 'warning') icon = '&#9888;';
+
+        toast.innerHTML = `<span style="font-size: 1.1rem; font-weight:800;">${icon}</span> <span>${message}</span>`;
+        container.appendChild(toast);
+
+        setTimeout(() => {
+          toast.style.transition = 'all 0.3s ease';
+          toast.style.opacity = '0';
+          toast.style.transform = 'translateX(100%)';
+          setTimeout(() => toast.remove(), 300);
+        }, 4000);
+      }
+    };
+
+    // --- UI CONTROLLER & VIEW ROUTER ---
+    const UI = {
+      currentTab: 'buy', // 'buy' or 'sell'
+      pendingResetData: null,
+
+      init() {
+        DB.init();
+        this.bindEvents();
+        this.render();
+      },
+
+      bindEvents() {
+        document.getElementById('brandLogo').addEventListener('click', () => {
+          if (DB.getActiveUser()) {
+            this.currentTab = 'buy';
+            this.render();
+          } else {
+            this.renderAuthView('login');
+          }
+        });
+
+        // SMS action button
+        document.getElementById('smsConfirmActionBtn').addEventListener('click', () => {
+          this.handleSmsConfirm();
+        });
+
+        // Deposit form submission
+        document.getElementById('depositForm').addEventListener('submit', (e) => {
+          e.preventDefault();
+          this.handleDepositSubmit();
+        });
+
+        // Reset password form submission
+        document.getElementById('resetPasswordForm').addEventListener('submit', (e) => {
+          e.preventDefault();
+          this.handlePasswordResetSubmit();
+        });
+      },
+
+      setDepositQuickVal(amount) {
+        document.getElementById('depositAmount').value = amount;
+      },
+
+      openModal(modalId) {
+        const modal = document.getElementById(modalId);
+        if (modal) modal.classList.add('show');
+      },
+
+      closeModal(modalId) {
+        const modal = document.getElementById(modalId);
+        if (modal) modal.classList.remove('show');
+      },
+
+      render() {
+        const activeUser = DB.getActiveUser();
+        this.renderHeader(activeUser);
+
+        if (!activeUser) {
+          this.renderAuthView('login');
+        } else {
+          this.renderDashboard(activeUser);
+        }
+      },
+
+      renderHeader(user) {
+        const navContainer = document.getElementById('headerAuthNav');
+        if (!user) {
+          navContainer.innerHTML = `
+            <button class="btn btn-sm btn-primary" onclick="UI.renderAuthView('login')">Acessar Conta</button>
+            <button class="btn btn-sm" onclick="UI.renderAuthView('register')">Cadastrar</button>
+          `;
+        } else {
+          navContainer.innerHTML = `
+            <div class="wallet-chip">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                <line x1="2" y1="10" x2="22" y2="10"></line>
+              </svg>
+              <span>Saldo:</span>
+              <span class="balance-value">${InputMasks.formatBRL(user.balance)}</span>
+            </div>
+            <button class="btn btn-sm btn-danger" onclick="UI.handleLogout()" title="Sair da Conta">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                <polyline points="16 17 21 12 16 7"></polyline>
+                <line x1="21" y1="12" x2="9" y2="12"></line>
+              </svg>
+              Sair
+            </button>
+          `;
+        }
+      },
+
+      // --- AUTH VIEWS ---
+      renderAuthView(viewMode) {
+        const root = document.getElementById('appRoot');
+
+        if (viewMode === 'login') {
+          root.innerHTML = `
+            <div class="auth-wrapper">
+              <div class="auth-card neu-box">
+                <div class="auth-icon-circle">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                  </svg>
+                </div>
+                <div class="auth-card-header">
+                  <h2>Login Seguro</h2>
+                  <p>Acesse seu painel com CPF e Senha protegidos</p>
+                </div>
+
+                <div class="security-banner">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                  </svg>
+                  <span>Criptografia SHA-256 e Sessão Isolada OWASP.</span>
+                </div>
+
+                <form id="loginForm">
+                  <div class="form-group">
+                    <label class="form-label" for="loginCpf">CPF do Titular</label>
+                    <input type="text" class="form-control" id="loginCpf" placeholder="000.000.000-00" required>
+                  </div>
+
+                  <div class="form-group">
+                    <div style="display:flex; justify-content:space-between; align-items:center;">
+                      <label class="form-label" for="loginPassword">Senha</label>
+                      <a class="auth-link" style="font-size:0.8rem; margin-bottom:0.45rem;" onclick="UI.renderAuthView('recovery')">Esqueci minha senha</a>
+                    </div>
+                    <input type="password" class="form-control" id="loginPassword" placeholder="Sua senha secreta" required>
+                  </div>
+
+                  <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 0.5rem;">
+                    Entrar na Plataforma
+                  </button>
+                </form>
+
+                <div class="auth-switch-text">
+                  Não possui uma conta? <a class="auth-link" onclick="UI.renderAuthView('register')">Criar conta grátis</a>
+                </div>
+              </div>
+            </div>
+          `;
+
+          // Setup mask
+          const cpfInput = document.getElementById('loginCpf');
+          cpfInput.addEventListener('input', (e) => {
+            e.target.value = InputMasks.formatCPF(e.target.value);
+          });
+
+          document.getElementById('loginForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            this.handleLoginSubmit();
+          });
+        } 
+        else if (viewMode === 'register') {
+          root.innerHTML = `
+            <div class="auth-wrapper">
+              <div class="auth-card neu-box" style="max-width: 620px;">
+                <div class="auth-icon-circle">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="8.5" cy="7" r="4"></circle>
+                    <line x1="20" y1="8" x2="20" y2="14"></line>
+                    <line x1="23" y1="11" x2="17" y2="11"></line>
+                  </svg>
+                </div>
+                <div class="auth-card-header">
+                  <h2>Criar Nova Conta</h2>
+                  <p>Ganhe R$ 1.000,00 de saldo inicial para negociar no Mall</p>
+                </div>
+
+                <div class="security-banner">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="16" x2="12" y2="12"></line>
+                    <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                  </svg>
+                  <span>Conformidade PCI-DSS: O número do cartão é tokenizado e gravado apenas como máscara com os 4 últimos dígitos.</span>
+                </div>
+
+                <form id="registerForm">
+                  <div class="form-group">
+                    <label class="form-label" for="regName">Nome Completo</label>
+                    <input type="text" class="form-control" id="regName" placeholder="Ex: Lucas Gabriel Silveira" required>
+                  </div>
+
+                  <div class="auth-grid-2">
+                    <div class="form-group">
+                      <label class="form-label" for="regCpf">CPF</label>
+                      <input type="text" class="form-control" id="regCpf" placeholder="000.000.000-00" required>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="form-label" for="regPhone">Telefone / Celular</label>
+                      <input type="text" class="form-control" id="regPhone" placeholder="(00) 00000-0000" required>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label" for="regAddress">Endereço Residencial Completo</label>
+                    <input type="text" class="form-control" id="regAddress" placeholder="Rua, Número, Bairro, Cidade - UF" required>
+                  </div>
+
+                  <div class="auth-grid-2">
+                    <div class="form-group">
+                      <label class="form-label" for="regCard">Cartão de Crédito</label>
+                      <input type="text" class="form-control" id="regCard" placeholder="0000 0000 0000 0000" required>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="form-label" for="regPassword">Senha de Acesso</label>
+                      <input type="password" class="form-control" id="regPassword" placeholder="Mínimo 6 dígitos" minlength="6" required>
+                    </div>
+                  </div>
+
+                  <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">
+                    Concluir Cadastro e Resgatar R$ 1.000
+                  </button>
+                </form>
+
+                <div class="auth-switch-text">
+                  Já é cadastrado? <a class="auth-link" onclick="UI.renderAuthView('login')">Fazer Login</a>
+                </div>
+              </div>
+            </div>
+          `;
+
+          // Setup Masks
+          document.getElementById('regCpf').addEventListener('input', (e) => {
+            e.target.value = InputMasks.formatCPF(e.target.value);
+          });
+          document.getElementById('regPhone').addEventListener('input', (e) => {
+            e.target.value = InputMasks.formatPhone(e.target.value);
+          });
+          document.getElementById('regCard').addEventListener('input', (e) => {
+            e.target.value = InputMasks.formatCard(e.target.value);
+          });
+
+          document.getElementById('registerForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            this.handleRegisterSubmit();
+          });
+        }
+        else if (viewMode === 'recovery') {
+          root.innerHTML = `
+            <div class="auth-wrapper">
+              <div class="auth-card neu-box">
+                <div class="auth-icon-circle">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                  </svg>
+                </div>
+                <div class="auth-card-header">
+                  <h2>Recuperação de Senha</h2>
+                  <p>Validação cruzada de segurança via SMS Simulado</p>
+                </div>
+
+                <div class="security-banner">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="16" x2="12" y2="12"></line>
+                    <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                  </svg>
+                  <span>Informe os dados cadastrados. Se houver correspondência exata de CPF e Telefone, um código SMS será enviado na tela.</span>
+                </div>
+
+                <form id="recoveryForm">
+                  <div class="form-group">
+                    <label class="form-label" for="recCpf">CPF Cadastrado</label>
+                    <input type="text" class="form-control" id="recCpf" placeholder="000.000.000-00" required>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label" for="recPhone">Telefone Celular Cadastrado</label>
+                    <input type="text" class="form-control" id="recPhone" placeholder="(00) 00000-0000" required>
+                  </div>
+
+                  <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 0.5rem;">
+                    Validar e Enviar SMS
+                  </button>
+                </form>
+
+                <div class="auth-switch-text">
+                  Lembrou sua senha? <a class="auth-link" onclick="UI.renderAuthView('login')">Voltar ao Login</a>
+                </div>
+              </div>
+            </div>
+          `;
+
+          document.getElementById('recCpf').addEventListener('input', (e) => {
+            e.target.value = InputMasks.formatCPF(e.target.value);
+          });
+          document.getElementById('recPhone').addEventListener('input', (e) => {
+            e.target.value = InputMasks.formatPhone(e.target.value);
+          });
+
+          document.getElementById('recoveryForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            this.handleRecoverySubmit();
+          });
+        }
+      },
+
+      // --- DASHBOARD VIEW ---
+      renderDashboard(user) {
+        const root = document.getElementById('appRoot');
+
+        root.innerHTML = `
+          <!-- Profile & Wallet Overview -->
+          <div class="profile-hero-grid">
+            <!-- Wallet Card -->
+            <div class="wallet-card neu-box">
+              <div>
+                <div class="wallet-label">Carteira Digital NexusPay</div>
+                <div class="wallet-balance-big">
+                  ${InputMasks.formatBRL(user.balance).split(',')[0]},<span>${InputMasks.formatBRL(user.balance).split(',')[1]}</span>
+                </div>
+                <p style="color: var(--text-muted); font-size: 0.88rem; margin-bottom: 1.5rem;">
+                  Fundos disponíveis para aquisição imediata no catálogo do Mall ou recebimento de vendas.
+                </p>
+              </div>
+
+              <div class="wallet-actions">
+                <button class="btn btn-success" onclick="UI.openModal('depositModal')">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                  </svg>
+                  Depositar Saldo
+                </button>
+                <button class="btn" onclick="UI.switchTab('sell')">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="9" cy="21" r="1"></circle>
+                    <circle cx="20" cy="21" r="1"></circle>
+                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                  </svg>
+                  Anunciar Produto
+                </button>
+              </div>
+            </div>
+
+            <!-- User Info Card -->
+            <div class="user-profile-card neu-box">
+              <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom: 1rem;">
+                <div>
+                  <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main);">${this.escapeHtml(user.name)}</h3>
+                  <span class="badge badge-primary">Conta Verificada</span>
+                </div>
+                <div class="badge badge-success">Segurança PCI-DSS</div>
+              </div>
+
+              <div class="profile-info-list">
+                <div class="profile-info-item">
+                  <span class="info-label">CPF</span>
+                  <span class="info-val">${user.cpf}</span>
+                </div>
+                <div class="profile-info-item">
+                  <span class="info-label">Telefone</span>
+                  <span class="info-val">${user.phone}</span>
+                </div>
+                <div class="profile-info-item">
+                  <span class="info-label">Cartão Tokenizado</span>
+                  <span class="info-val" style="letter-spacing: 0.05em; font-family: monospace;">${user.cardMasked}</span>
+                </div>
+                <div class="profile-info-item">
+                  <span class="info-label">Endereço</span>
+                  <span class="info-val" style="max-width: 220px; text-align: right; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="${this.escapeHtml(user.address)}">
+                    ${this.escapeHtml(user.address)}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Navigation Tabs: Comprar vs Anunciar -->
+          <div class="nav-tabs-bar">
+            <button class="nav-tab-btn ${this.currentTab === 'buy' ? 'active' : ''}" onclick="UI.switchTab('buy')">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                <line x1="8" y1="21" x2="16" y2="21"></line>
+                <line x1="12" y1="17" x2="12" y2="21"></line>
+              </svg>
+              Comprar no Mall
+            </button>
+            <button class="nav-tab-btn ${this.currentTab === 'sell' ? 'active' : ''}" onclick="UI.switchTab('sell')">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+              </svg>
+              Anunciar Novo Produto
+            </button>
+          </div>
+
+          <!-- Tab Content Area -->
+          <div id="tabContentContainer">
+            ${this.currentTab === 'buy' ? this.renderBuyTab(user) : this.renderSellTab(user)}
+          </div>
+        `;
+
+        if (this.currentTab === 'buy') {
+          this.bindBuyTabFilters();
+        } else {
+          this.bindSellTabForm();
+        }
+      },
+
+      switchTab(tab) {
+        this.currentTab = tab;
+        const activeUser = DB.getActiveUser();
+        if (activeUser) {
+          this.renderDashboard(activeUser);
+        }
+      },
+
+      // --- TAB: COMPRAR NO MERCADO ---
+      renderBuyTab(currentUser) {
+        const products = DB.getProducts();
+
+        return `
+          <div class="section-title-wrap">
+            <div class="section-title">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="9" cy="21" r="1"></circle>
+                <circle cx="20" cy="21" r="1"></circle>
+                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+              </svg>
+              Vitrine de Produtos Disponíveis
+            </div>
+            <div style="font-size: 0.9rem; color: var(--text-muted); font-weight: 600;">
+              ${products.length} anúncio(s) cadastrado(s)
+            </div>
+          </div>
+
+          <!-- Search & Filter Controls -->
+          <div class="search-filter-bar">
+            <div class="search-input-wrap">
+              <input type="text" id="productSearchInput" class="form-control" placeholder="Buscar por título ou descrição...">
+            </div>
+            <select id="productCategoryFilter" class="form-control category-select">
+              <option value="">Todas Categorias</option>
+              <option value="Eletrônicos">Eletrônicos</option>
+              <option value="Periféricos">Periféricos</option>
+              <option value="Móveis">Móveis</option>
+              <option value="Outros">Outros</option>
+            </select>
+          </div>
+
+          <div class="product-grid" id="productGridList">
+            ${this.renderProductCards(products, currentUser)}
+          </div>
+        `;
+      },
+
+      renderProductCards(products, currentUser) {
+        if (!products || products.length === 0) {
+          return `
+            <div class="empty-state neu-box">
+              <div class="empty-state-icon">&#128722;</div>
+              <h3>Nenhum produto anunciado no momento</h3>
+              <p>Seja o primeiro a vender desapegos ou novidades na plataforma.</p>
+              <button class="btn btn-primary btn-sm" style="margin-top: 1rem;" onclick="UI.switchTab('sell')">
+                Criar Anúncio Agora
+              </button>
+            </div>
+          `;
+        }
+
+        const users = DB.getUsers();
+        const currentCpfClean = InputMasks.cleanDigits(currentUser.cpf);
+
+        return products.map(prod => {
+          // Identify seller data
+          const seller = users.find(u => InputMasks.cleanDigits(u.cpf) === InputMasks.cleanDigits(prod.sellerCpf));
+          const sellerName = seller ? seller.name : 'Vendedor Nexus';
+          const sellerPhone = seller ? seller.phone : '(00) 00000-0000';
+          const sellerAddress = seller ? seller.address : 'São Paulo - SP';
+          
+          const isOwnProduct = InputMasks.cleanDigits(prod.sellerCpf) === currentCpfClean;
+
+          return `
+            <div class="product-card neu-box">
+              <div class="product-badge-wrap">
+                <span class="product-category-tag">${this.escapeHtml(prod.category || 'Geral')}</span>
+                ${isOwnProduct ? '<span class="badge badge-warning">Seu Anúncio</span>' : '<span class="badge badge-primary">Disponível</span>'}
+              </div>
+
+              <h4 class="product-title">${this.escapeHtml(prod.title)}</h4>
+              <p class="product-desc">${this.escapeHtml(prod.description)}</p>
+
+              <!-- Seller Information Box -->
+              <div class="product-seller-box">
+                <div class="seller-header">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                  </svg>
+                  <span>${this.escapeHtml(sellerName)}</span>
+                </div>
+                <div class="seller-details">
+                  <div>&#128222; ${sellerPhone}</div>
+                  <div>&#128205; ${this.escapeHtml(sellerAddress)}</div>
+                </div>
+              </div>
+
+              <!-- Footer with Price and Action -->
+              <div class="product-footer">
+                <div>
+                  <div style="font-size: 0.72rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Preço</div>
+                  <div class="product-price">${InputMasks.formatBRL(prod.price)}</div>
+                </div>
+
+                ${isOwnProduct 
+                  ? `<span class="own-product-tag">Auto-compra bloqueada</span>` 
+                  : `<button class="btn btn-primary btn-sm" onclick="UI.handleBuyProduct('${prod.id}')">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg>
+                      Comprar Agora
+                    </button>`
+                }
+              </div>
+            </div>
+          `;
+        }).join('');
+      },
+
+      bindBuyTabFilters() {
+        const searchInput = document.getElementById('productSearchInput');
+        const catSelect = document.getElementById('productCategoryFilter');
+        const grid = document.getElementById('productGridList');
+
+        const filterProducts = () => {
+          const query = (searchInput.value || '').toLowerCase().trim();
+          const category = catSelect.value;
+          const allProducts = DB.getProducts();
+          const activeUser = DB.getActiveUser();
+
+          const filtered = allProducts.filter(prod => {
+            const matchesQuery = prod.title.toLowerCase().includes(query) || prod.description.toLowerCase().includes(query);
+            const matchesCat = category ? prod.category === category : true;
+            return matchesQuery && matchesCat;
+          });
+
+          grid.innerHTML = this.renderProductCards(filtered, activeUser);
+        };
+
+        if (searchInput) searchInput.addEventListener('input', filterProducts);
+        if (catSelect) catSelect.addEventListener('change', filterProducts);
+      },
+
+      // --- TAB: ANUNCIAR PRODUTO ---
+      renderSellTab(currentUser) {
+        return `
+          <div class="create-product-container neu-box">
+            <div class="auth-card-header" style="text-align: left; margin-bottom: 1.5rem;">
+              <div class="section-title">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                  <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                </svg>
+                Anunciar Produto no Mall
+              </div>
+              <p style="margin-top: 0.25rem;">Seus dados de contato e endereço de postagem serão associados ao anúncio automaticamente.</p>
+            </div>
+
+            <form id="sellProductForm">
+              <div class="form-group">
+                <label class="form-label" for="prodTitle">Título do Anúncio</label>
+                <input type="text" class="form-control" id="prodTitle" placeholder="Ex: Sony PlayStation 5 com 2 Controles" required>
+              </div>
+
+              <div class="auth-grid-2">
+                <div class="form-group">
+                  <label class="form-label" for="prodPrice">Preço (R$)</label>
+                  <input type="number" step="0.01" min="1" max="100000" class="form-control" id="prodPrice" placeholder="Ex: 3450.00" required>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="prodCategory">Categoria</label>
+                  <select class="form-control" id="prodCategory" required>
+                    <option value="Eletrônicos">Eletrônicos</option>
+                    <option value="Periféricos">Periféricos</option>
+                    <option value="Móveis">Móveis</option>
+                    <option value="Outros">Outros</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="prodDesc">Descrição Detalhada do Produto</label>
+                <textarea class="form-control" id="prodDesc" placeholder="Descreva os detalhes, tempo de uso, acessórios inclusos e estado de conservação..." required></textarea>
+              </div>
+
+              <!-- Linked Seller Info Preview -->
+              <div class="security-banner">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+                <div>
+                  <strong>Vendedor Responsável:</strong> ${this.escapeHtml(currentUser.name)} &bull; ${currentUser.phone}<br>
+                  <span style="font-size:0.75rem;">Endereço vinculado: ${this.escapeHtml(currentUser.address)}</span>
+                </div>
+              </div>
+
+              <div style="display: flex; gap: 1rem; margin-top: 1.5rem;">
+                <button type="button" class="btn" style="flex: 1;" onclick="UI.switchTab('buy')">Cancelar</button>
+                <button type="submit" class="btn btn-primary" style="flex: 2;">Publicar Anúncio no Mall</button>
+              </div>
+            </form>
+          </div>
+        `;
+      },
+
+      bindSellTabForm() {
+        const form = document.getElementById('sellProductForm');
+        if (form) {
+          form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            this.handleCreateProductSubmit();
+          });
+        }
+      },
+
+      // --- LOGIC: LOGIN ---
+      async handleLoginSubmit() {
+        const cpf = document.getElementById('loginCpf').value;
+        const password = document.getElementById('loginPassword').value;
+
+        const user = DB.findUserByCpf(cpf);
+        if (!user) {
+          Toast.show('CPF ou senha inválidos.', 'error');
+          return;
+        }
+
+        const hashed = await CryptoService.sha256(password);
+        if (hashed !== user.passwordHash) {
+          Toast.show('CPF ou senha inválidos.', 'error');
+          return;
+        }
+
+        DB.setActiveSession(user.cpf);
+        Toast.show(`Bem-vindo de volta, ${user.name}!`, 'success');
+        this.currentTab = 'buy';
+        this.render();
+      },
+
+      // --- LOGIC: REGISTER ---
+      async handleRegisterSubmit() {
+        const name = document.getElementById('regName').value.trim();
+        const cpf = document.getElementById('regCpf').value.trim();
+        const phone = document.getElementById('regPhone').value.trim();
+        const address = document.getElementById('regAddress').value.trim();
+        const cardRaw = document.getElementById('regCard').value.trim();
+        const password = document.getElementById('regPassword').value;
+
+        // Validations
+        if (InputMasks.cleanDigits(cpf).length !== 11) {
+          Toast.show('Por favor, informe um CPF válido com 11 dígitos.', 'warning');
+          return;
+        }
+
+        if (InputMasks.cleanDigits(phone).length < 10) {
+          Toast.show('Por favor, informe um telefone válido com DDD.', 'warning');
+          return;
+        }
+
+        if (InputMasks.cleanDigits(cardRaw).length < 16) {
+          Toast.show('O cartão deve conter 16 dígitos.', 'warning');
+          return;
+        }
+
+        if (password.length < 6) {
+          Toast.show('A senha deve ter no mínimo 6 caracteres.', 'warning');
+          return;
+        }
+
+        if (DB.findUserByCpf(cpf)) {
+          Toast.show('Este CPF já está cadastrado no sistema.', 'error');
+          return;
+        }
+
+        // OWASP & PCI-DSS Enforcement
+        const passwordHash = await CryptoService.sha256(password);
+        const cardMasked = CryptoService.maskCreditCard(cardRaw);
+
+        const newUser = {
+          id: 'usr_' + Date.now(),
+          name,
+          cpf,
+          phone,
+          address,
+          cardMasked, // NEVER storing the raw card
+          passwordHash, // NEVER storing plain password
+          balance: 1000.00, // Requisito: cada conta se inicia com R$ 1.000,00
+          createdAt: new Date().toISOString()
+        };
+
+        const users = DB.getUsers();
+        users.push(newUser);
+        DB.saveUsers(users);
+
+        // Auto login
+        DB.setActiveSession(newUser.cpf);
+        Toast.show('Conta criada com sucesso! Saldo inicial de R$ 1.000,00 creditado.', 'success');
+        this.currentTab = 'buy';
+        this.render();
+      },
+
+      // --- LOGIC: RECOVERY & SIMULATED SMS ---
+      handleRecoverySubmit() {
+        const cpf = document.getElementById('recCpf').value.trim();
+        const phone = document.getElementById('recPhone').value.trim();
+
+        const user = DB.findUserByCpf(cpf);
+        const cleanRecPhone = InputMasks.cleanDigits(phone);
+
+        if (!user || InputMasks.cleanDigits(user.phone) !== cleanRecPhone) {
+          Toast.show('Dados não conferem. Verifique o CPF e Telefone cadastrados.', 'error');
+          return;
+        }
+
+        // Generate 6 digit simulated OTP
+        const otp = Math.floor(100000 + Math.random() * 900000);
+        this.pendingResetData = {
+          cpf: user.cpf,
+          otp: otp.toString()
+        };
+
+        // Show Simulated SMS Toast
+        const smsToast = document.getElementById('smsToast');
+        document.getElementById('smsOtpCode').innerText = otp;
+        document.getElementById('smsToastBody').innerHTML = `
+          NexusPay SMS para <strong>${user.phone}</strong>: Seu código de liberação para redefinição é <strong class="sms-otp-badge">${otp}</strong>.
+        `;
+        smsToast.classList.add('visible');
+
+        Toast.show('SMS com código de segurança enviado para seu celular!', 'info');
+      },
+
+      handleSmsConfirm() {
+        if (!this.pendingResetData) return;
+
+        // Hide SMS toast
+        const smsToast = document.getElementById('smsToast');
+        smsToast.classList.remove('visible');
+
+        // Open Password Reset Modal
+        document.getElementById('resetTargetCpf').value = this.pendingResetData.cpf;
+        document.getElementById('newPasswordInput').value = '';
+        document.getElementById('confirmNewPasswordInput').value = '';
+        this.openModal('resetPasswordModal');
+      },
+
+      async handlePasswordResetSubmit() {
+        const cpf = document.getElementById('resetTargetCpf').value;
+        const newPass = document.getElementById('newPasswordInput').value;
+        const confirmPass = document.getElementById('confirmNewPasswordInput').value;
+
+        if (newPass.length < 6) {
+          Toast.show('A nova senha deve ter no mínimo 6 dígitos.', 'warning');
+          return;
+        }
+
+        if (newPass !== confirmPass) {
+          Toast.show('As senhas digitadas não coincidem.', 'error');
+          return;
+        }
+
+        const newHash = await CryptoService.sha256(newPass);
+        const ok = DB.updateUserPassword(cpf, newHash);
+
+        if (ok) {
+          this.closeModal('resetPasswordModal');
+          this.pendingResetData = null;
+          Toast.show('Senha redefinida com sucesso! Você já pode entrar.', 'success');
+          this.renderAuthView('login');
+        } else {
+          Toast.show('Erro ao atualizar senha.', 'error');
+        }
+      },
+
+      // --- LOGIC: CREATE PRODUCT ---
+      handleCreateProductSubmit() {
+        const user = DB.getActiveUser();
+        if (!user) return;
+
+        const title = document.getElementById('prodTitle').value.trim();
+        const price = parseFloat(document.getElementById('prodPrice').value);
+        const category = document.getElementById('prodCategory').value;
+        const description = document.getElementById('prodDesc').value.trim();
+
+        if (isNaN(price) || price <= 0) {
+          Toast.show('Informe um preço válido.', 'warning');
+          return;
+        }
+
+        const newProduct = {
+          id: 'prod_' + Date.now(),
+          title,
+          category,
+          description,
+          price,
+          sellerCpf: user.cpf,
+          createdAt: new Date().toISOString()
+        };
+
+        const products = DB.getProducts();
+        products.unshift(newProduct); // Add to beginning of grid
+        DB.saveProducts(products);
+
+        Toast.show('Produto anunciado com sucesso na vitrine!', 'success');
+        this.switchTab('buy');
+      },
+
+      // --- LOGIC: BUY PRODUCT ---
+      handleBuyProduct(productId) {
+        const buyer = DB.getActiveUser();
+        if (!buyer) {
+          Toast.show('Faça login para realizar compras.', 'warning');
+          return;
+        }
+
+        const products = DB.getProducts();
+        const productIndex = products.findIndex(p => p.id === productId);
+
+        if (productIndex === -1) {
+          Toast.show('Produto não encontrado.', 'error');
+          return;
+        }
+
+        const product = products[productIndex];
+        const buyerCpfClean = InputMasks.cleanDigits(buyer.cpf);
+        const sellerCpfClean = InputMasks.cleanDigits(product.sellerCpf);
+
+        // Self-purchase prevention rule
+        if (buyerCpfClean === sellerCpfClean) {
+          Toast.show('Você não pode comprar o seu próprio produto anunciado!', 'warning');
+          return;
+        }
+
+        // Insufficient funds check
+        if (buyer.balance < product.price) {
+          Toast.show(`Saldo insuficiente! Você possui ${InputMasks.formatBRL(buyer.balance)} e o produto custa ${InputMasks.formatBRL(product.price)}.`, 'error');
+          this.openModal('depositModal');
+          return;
+        }
+
+        // Execute Transaction
+        const updatedBuyerBalance = buyer.balance - product.price;
+        DB.updateUserBalance(buyer.cpf, updatedBuyerBalance);
+
+        // Add funds to seller
+        const seller = DB.findUserByCpf(product.sellerCpf);
+        if (seller) {
+          const updatedSellerBalance = seller.balance + product.price;
+          DB.updateUserBalance(seller.cpf, updatedSellerBalance);
+        }
+
+        // Remove bought product from marketplace
+        products.splice(productIndex, 1);
+        DB.saveProducts(products);
+
+        Toast.show(`Compra de "${product.title}" concluída com sucesso!`, 'success');
+        this.render();
+      },
+
+      // --- LOGIC: DEPOSIT ---
+      handleDepositSubmit() {
+        const user = DB.getActiveUser();
+        if (!user) return;
+
+        const amountInput = document.getElementById('depositAmount');
+        const amount = parseFloat(amountInput.value);
+
+        if (isNaN(amount) || amount <= 0) {
+          Toast.show('Informe um valor de depósito válido.', 'warning');
+          return;
+        }
+
+        const newBalance = user.balance + amount;
+        DB.updateUserBalance(user.cpf, newBalance);
+
+        this.closeModal('depositModal');
+        amountInput.value = '';
+        Toast.show(`Depósito de ${InputMasks.formatBRL(amount)} confirmado com sucesso!`, 'success');
+        this.render();
+      },
+
+      // --- LOGIC: LOGOUT ---
+      handleLogout() {
+        DB.clearActiveSession();
+        Toast.show('Você encerrou sua sessão.', 'info');
+        this.render();
+      },
+
+      // --- HELPER: HTML ESCAPE ---
+      escapeHtml(str) {
+        if (!str) return '';
+        const div = document.createElement('div');
+        div.textContent = str;
+        return div.innerHTML;
+      }
+    };
+
+    // Initialize application on DOM ready
+    document.addEventListener('DOMContentLoaded', () => {
+      UI.init();
+    });
+  </script>
+</body>
+</html>
