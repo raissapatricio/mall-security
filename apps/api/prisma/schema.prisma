@@ -30,6 +30,7 @@ model Product {
   category    String
   description String
   price       Float
+  imageUrl    String?
   isSold      Boolean       @default(false)
   sellerId    String
   seller      User          @relation("SellerProducts", fields: [sellerId], references: [id], onDelete: Cascade)

@@ -12,7 +12,8 @@ const createProductSchema = z.object({
     .max(1000, 'A descrição não pode ultrapassar 1000 caracteres.'),
   price: z.number({ invalid_type_error: 'O preço deve ser um valor numérico.' })
     .positive('O preço deve ser maior que zero.')
-    .max(100000, 'O valor máximo por produto é R$ 100.000,00.')
+    .max(100000, 'O valor máximo por produto é R$ 100.000,00.'),
+  imageUrl: z.string().url('URL da imagem inválida.').optional().or(z.literal(''))
 });
 
 const depositSchema = z.object({

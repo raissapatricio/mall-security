@@ -9,9 +9,13 @@ export const useMarketStore = create((set, get) => ({
   searchQuery: '',
   depositModalOpen: false,
   createProductModalOpen: false,
+  editProductModalOpen: false,
+  selectedProduct: null,
 
   setDepositModalOpen: (open) => set({ depositModalOpen: open }),
   setCreateProductModalOpen: (open) => set({ createProductModalOpen: open }),
+  setEditProductModalOpen: (open) => set({ editProductModalOpen: open }),
+  setSelectedProduct: (product) => set({ selectedProduct: product }),
   setFilterCategory: (cat) => set({ filterCategory: cat }),
   setSearchQuery: (query) => set({ searchQuery: query }),
 
@@ -51,6 +55,39 @@ export const useMarketStore = create((set, get) => ({
         createProductModalOpen: false
       }));
       useAuthStore.getState().addToast('Produto anunciado com sucesso!', 'success');
+      return { success: true };
+    } catch (err) {
+      const detailMsg = err.details?.length ? err.details.map((d) => d.message).join(' ') : err.message;
+      useAuthStore.getState().addToast(detailMsg, 'error');
+      return { success: false, error: detailMsg };
+    }
+  },
+
+  // Edit product (PUT)
+  editProduct: async (productId, productData) => {
+    try {
+      const res = await api.put(`/market/products/${productId}`, productData);
+      // Update local product list
+      set((state) => ({
+        products: state.products.map((p) => (p.id === productId ? res.data.product : p))
+      }));
+      useAuthStore.getState().addToast('Produto atualizado com sucesso!', 'success');
+      return { success: true };
+    } catch (err) {
+      const detailMsg = err.details?.length ? err.details.map((d) => d.message).join(' ') : err.message;
+      useAuthStore.getState().addToast(detailMsg, 'error');
+      return { success: false, error: detailMsg };
+    }
+  },
+
+  // Delete product (DELETE)
+  deleteProduct: async (productId) => {
+    try {
+      await api.delete(`/market/products/${productId}`);
+      set((state) => ({
+        products: state.products.filter((p) => p.id !== productId)
+      }));
+      useAuthStore.getState().addToast('Produto removido com sucesso.', 'success');
       return { success: true };
     } catch (err) {
       const detailMsg = err.details?.length ? err.details.map((d) => d.message).join(' ') : err.message;

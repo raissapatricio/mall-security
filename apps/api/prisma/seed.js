@@ -27,7 +27,7 @@ async function main() {
     }
   });
 
-  // Produtos iniciais disponíveis no mercado
+  // Produtos iniciais disponíveis no mercado com imagens web de alta definição
   await prisma.product.createMany({
     data: [
       {
@@ -35,6 +35,7 @@ async function main() {
         category: 'Eletrônicos',
         description: 'Impecável, sem marcas de uso, na caixa com nota fiscal e garantia AppleCare ativa.',
         price: 7490.00,
+        imageUrl: 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=800&q=80',
         sellerId: officialSeller.id
       },
       {
@@ -42,6 +43,7 @@ async function main() {
         category: 'Periféricos',
         description: 'Vidro padrão, suporte com inclinação ajustável, câmera de 12MP Ultra-Wide com Palco Central.',
         price: 9890.00,
+        imageUrl: 'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=800&q=80',
         sellerId: officialSeller.id
       },
       {
@@ -49,6 +51,7 @@ async function main() {
         category: 'Periféricos',
         description: 'Combo Apple na cor preta, conexão USB-C e cabo Lightning trançado incluso.',
         price: 1350.00,
+        imageUrl: 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=800&q=80',
         sellerId: officialSeller.id
       },
       {
@@ -56,6 +59,7 @@ async function main() {
         category: 'Móveis',
         description: 'Tamanho B, suporte postural PostureFit SL e rodízios para piso vinílico/madeira.',
         price: 5200.00,
+        imageUrl: 'https://images.unsplash.com/photo-1592078615290-033ee584e267?auto=format&fit=crop&w=800&q=80',
         sellerId: officialSeller.id
       }
     ]

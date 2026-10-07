@@ -45,7 +45,7 @@ router.get('/products', async (req, res) => {
  */
 router.post('/products', authMiddleware, validate(createProductSchema), async (req, res) => {
   try {
-    const { title, category, description, price } = req.body;
+    const { title, category, description, price, imageUrl } = req.body;
     const sellerId = req.user.id; // Extraído do JWT, ignorando qualquer payload de client
 
     const product = await prisma.product.create({
@@ -54,6 +54,7 @@ router.post('/products', authMiddleware, validate(createProductSchema), async (r
         category,
         description,
         price,
+        imageUrl: imageUrl || null,
         sellerId
       },
       include: {
@@ -191,6 +192,52 @@ router.post('/buy/:id', authMiddleware, transactionLimiter, async (req, res) => 
       error: 'Falha ao processar transação de compra. Nenhuma alteração foi realizada.',
       code: 'TRANSACTION_ABORTED'
     });
+  }
+});
+
+// Delete product endpoint
+router.delete('/products/:id', authMiddleware, async (req, res) => {
+  const productId = req.params.id;
+  const userId = req.user.id;
+  try {
+    const product = await prisma.product.findUnique({ where: { id: productId } });
+    if (!product) {
+      return res.status(404).json({ error: 'Produto não encontrado.', code: 'PRODUCT_NOT_FOUND' });
+    }
+    // Only owner can delete
+    if (product.sellerId !== userId) {
+      return res.status(403).json({ error: 'Você não tem permissão para remover este produto.', code: 'FORBIDDEN_DELETE' });
+    }
+    await prisma.product.delete({ where: { id: productId } });
+    return res.json({ message: 'Produto removido com sucesso.' });
+  } catch (error) {
+    console.error('[MARKET_DELETE_PRODUCT_ERROR]', error);
+    return res.status(500).json({ error: 'Erro ao remover produto.', code: 'INTERNAL_SERVER_ERROR' });
+  }
+});
+
+// Update product endpoint
+router.put('/products/:id', authMiddleware, validate(createProductSchema), async (req, res) => {
+  const productId = req.params.id;
+  const userId = req.user.id;
+  const { title, category, description, price, imageUrl } = req.body;
+  try {
+    const product = await prisma.product.findUnique({ where: { id: productId } });
+    if (!product) {
+      return res.status(404).json({ error: 'Produto não encontrado.', code: 'PRODUCT_NOT_FOUND' });
+    }
+    if (product.sellerId !== userId) {
+      return res.status(403).json({ error: 'Você não tem permissão para editar este produto.', code: 'FORBIDDEN_EDIT' });
+    }
+    const updated = await prisma.product.update({
+      where: { id: productId },
+      data: { title, category, description, price, imageUrl: imageUrl || null },
+      include: { seller: { select: { id: true, name: true, phone: true, address: true } } }
+    });
+    return res.json({ message: 'Produto atualizado com sucesso.', product: updated });
+  } catch (error) {
+    console.error('[MARKET_UPDATE_PRODUCT_ERROR]', error);
+    return res.status(500).json({ error: 'Erro ao atualizar produto.', code: 'INTERNAL_SERVER_ERROR' });
   }
 });
 

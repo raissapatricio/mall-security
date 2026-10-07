@@ -14,9 +14,9 @@
   --pastel-mint-text: #1e7e48;
   --pastel-mint-border: #c7eed6;
 
-  --pastel-blue-bg: #eaf3fe;
-  --pastel-blue-text: #1967d2;
-  --pastel-blue-border: #c8e1fd;
+  --pastel-blue-bg: #f5eefb;
+  --pastel-blue-text: #6b21a8;
+  --pastel-blue-border: #e6d3f6;
 
   --pastel-lavender-bg: #f5eefb;
   --pastel-lavender-text: #6b21a8;
@@ -30,11 +30,16 @@
   --pastel-rose-text: #9b1c1c;
   --pastel-rose-border: #f8b4b4;
 
-  /* Cores de Acento */
-  --apple-blue: #0071e3;
-  --apple-blue-hover: #0077ed;
-  --apple-blue-active: #005bb5;
-  --apple-blue-soft: rgba(0, 113, 227, 0.08);
+  /* Cores de Acento (Lavanda) */
+  --apple-blue: #c084fc;
+  --apple-blue-hover: #a855f7;
+  --apple-blue-active: #9333ea;
+  --apple-blue-soft: rgba(192, 132, 252, 0.08);
+
+  --apple-lavender: #7c3aed;
+  --apple-lavender-hover: #6d28d9;
+  --apple-lavender-active: #5b21b6;
+  --apple-lavender-soft: rgba(124, 58, 237, 0.08);
 
   --text-primary: #1d1d1f;
   --text-secondary: #86868b;
@@ -159,6 +164,18 @@ body {
   transform: translateY(-1px);
 }
 
+.btn-pastel-lavender {
+  background-color: var(--pastel-lavender-bg);
+  color: var(--pastel-lavender-text);
+  border-color: var(--pastel-lavender-border);
+  font-weight: 600;
+}
+
+.btn-pastel-lavender:hover {
+  background-color: #ede2f9;
+  transform: translateY(-1px);
+}
+
 .btn-sm {
   padding: 0.45rem 0.95rem;
   font-size: 0.84rem;
@@ -200,7 +217,7 @@ body {
 .form-input:focus {
   background-color: #ffffff;
   border-color: var(--apple-blue);
-  box-shadow: 0 0 0 3px rgba(0, 113, 227, 0.15);
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.15);
 }
 
 .form-input::placeholder {

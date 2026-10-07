@@ -7,7 +7,7 @@ import { WalletCard } from './components/WalletCard';
 import { ProductCard } from './components/ProductCard';
 import { AuthModal } from './components/AuthModal';
 import { DepositModal } from './components/DepositModal';
-import { CreateProductModal } from './components/CreateProductModal';
+import { EditProductModal } from './components/EditProductModal';
 import { ToastContainer } from './components/ToastContainer';
 import { Search, ShoppingBag, PlusCircle, Sparkles, Shield } from 'lucide-react';
 

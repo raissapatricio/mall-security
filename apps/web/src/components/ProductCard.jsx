@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useAuthStore } from '../store/useAuthStore';
 import { useMarketStore } from '../store/useMarketStore';
 import { formatBRL } from '../utils/masks';
-import { ShoppingCart, User, Phone, MapPin, CheckCircle, ShieldAlert } from 'lucide-react';
+import { ShoppingCart, User, Phone, MapPin, CheckCircle, ShieldAlert, Edit, Trash } from 'lucide-react';
 
 const categoryColors = {
   Eletrônicos: { bg: 'var(--pastel-blue-bg)', text: 'var(--pastel-blue-text)', border: 'var(--pastel-blue-border)' },
@@ -11,9 +11,45 @@ const categoryColors = {
   Outros: { bg: 'var(--pastel-mint-bg)', text: 'var(--pastel-mint-text)', border: 'var(--pastel-mint-border)' }
 };
 
+const categoryFallbacks = {
+  Eletrônicos: 'https://images.unsplash.com/photo-1498049794561-7780e7231661?auto=format&fit=crop&w=800&q=80',
+  Periféricos: 'https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?auto=format&fit=crop&w=800&q=80',
+  Móveis: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=800&q=80',
+  Outros: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=800&q=80'
+};
+
+const getProductImage = (product) => {
+  if (product.imageUrl && product.imageUrl.trim() !== '') {
+    return product.imageUrl;
+  }
+
+  const titleLower = (product.title || '').toLowerCase();
+
+  if (titleLower.includes('macbook') || titleLower.includes('notebook') || titleLower.includes('laptop')) {
+    return 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=800&q=80';
+  }
+  if (titleLower.includes('display') || titleLower.includes('monitor') || titleLower.includes('tela')) {
+    return 'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=800&q=80';
+  }
+  if (titleLower.includes('keyboard') || titleLower.includes('teclado') || titleLower.includes('trackpad')) {
+    return 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=800&q=80';
+  }
+  if (titleLower.includes('herman') || titleLower.includes('aeron') || titleLower.includes('cadeira') || titleLower.includes('chair')) {
+    return 'https://images.unsplash.com/photo-1592078615290-033ee584e267?auto=format&fit=crop&w=800&q=80';
+  }
+  if (titleLower.includes('iphone') || titleLower.includes('celular') || titleLower.includes('smartphone')) {
+    return 'https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?auto=format&fit=crop&w=800&q=80';
+  }
+  if (titleLower.includes('airpods') || titleLower.includes('fone') || titleLower.includes('headphone')) {
+    return 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=800&q=80';
+  }
+
+  return categoryFallbacks[product.category] || categoryFallbacks.Outros;
+};
+
 export const ProductCard = ({ product }) => {
   const { user, setAuthModal } = useAuthStore();
-  const { buyProduct } = useMarketStore();
+  const { buyProduct, setEditProductModalOpen, setSelectedProduct, deleteProduct } = useMarketStore();
   const [buying, setBuying] = useState(false);
 
   const isOwnProduct = user && user.id === product.sellerId;
@@ -36,7 +72,7 @@ export const ProductCard = ({ product }) => {
     <div
       className="apple-card"
       style={{
-        padding: '1.6rem',
+        padding: '1.4rem',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-between',
@@ -91,6 +127,41 @@ export const ProductCard = ({ product }) => {
               Disponível
             </span>
           )}
+        </div>
+
+        {/* Product Image above Title */}
+        <div
+          style={{
+            width: '100%',
+            height: '185px',
+            borderRadius: 'var(--radius-md)',
+            overflow: 'hidden',
+            marginBottom: '1rem',
+            backgroundColor: 'var(--surface-subtle)',
+            border: '1px solid var(--border-subtle)',
+            position: 'relative',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center'
+          }}
+        >
+          <img
+            src={getProductImage(product)}
+            alt={product.title}
+            loading="lazy"
+            onError={(e) => {
+              e.currentTarget.onerror = null;
+              e.currentTarget.src = categoryFallbacks[product.category] || categoryFallbacks.Outros;
+            }}
+            style={{
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              transition: 'transform 0.4s cubic-bezier(0.16, 1, 0.3, 1)'
+            }}
+            onMouseOver={(e) => { e.currentTarget.style.transform = 'scale(1.05)'; }}
+            onMouseOut={(e) => { e.currentTarget.style.transform = 'scale(1)'; }}
+          />
         </div>
 
         {/* Product Details */}
@@ -169,18 +240,39 @@ export const ProductCard = ({ product }) => {
         </div>
 
         {isOwnProduct ? (
-          <span
-            style={{
-              padding: '0.5rem 0.85rem',
-              borderRadius: 'var(--radius-full)',
-              backgroundColor: 'var(--surface-subtle)',
-              fontSize: '0.78rem',
-              fontWeight: 600,
-              color: 'var(--text-secondary)'
-            }}
-          >
-            Auto-compra bloqueada
-          </span>
+          <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
+            <span
+              style={{
+                padding: '0.5rem 0.85rem',
+                borderRadius: 'var(--radius-full)',
+                backgroundColor: 'var(--surface-subtle)',
+                fontSize: '0.78rem',
+                fontWeight: 600,
+                color: 'var(--text-secondary)'
+              }}
+            >
+              Auto-compra bloqueada
+            </span>
+            <button
+              className="btn btn-sm btn-primary"
+              onClick={() => {
+                setSelectedProduct(product);
+                setEditProductModalOpen(true);
+              }}
+              style={{ display: 'flex', alignItems: 'center', gap: '0.25rem' }}
+            >
+              <Edit size={14} />
+              Editar
+            </button>
+            <button
+              className="btn btn-sm btn-danger"
+              onClick={() => deleteProduct(product.id)}
+              style={{ display: 'flex', alignItems: 'center', gap: '0.25rem' }}
+            >
+              <Trash size={14} />
+              Remover
+            </button>
+          </div>
         ) : (
           <button
             className="btn btn-sm btn-primary"
